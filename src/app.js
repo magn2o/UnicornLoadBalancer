@@ -12,7 +12,6 @@ import debug from 'debug';
 
 // Debugger
 const D = debug('UnicornLoadBalancer');
-const util = require('util'); //mgn
 
 // Welcome
 D('Version: ' + config.version)
