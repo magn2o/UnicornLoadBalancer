@@ -3,6 +3,7 @@ import fs from 'fs';
 import fetch from 'node-fetch';
 import mkdirp from 'mkdirp';
 import config from './config';
+import crypto from 'crypto';
 
 export const publicUrl = () => {
     return (config.server.public)
@@ -54,3 +55,7 @@ export const mdir = (path) => (new Promise((resolve, reject) => {
         return resolve(path);
     })
 }));
+
+export const serverToken = () => {
+	return crypto.randomBytes(20).toString('hex');
+}

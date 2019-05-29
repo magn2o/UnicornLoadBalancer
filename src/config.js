@@ -1,5 +1,5 @@
 import env from 'getenv';
-var crypto = require('crypto');
+import { serverToken } from './utils';
 
 env.disableErrors();
 
@@ -9,7 +9,7 @@ export default {
         port: env.int('SERVER_PORT', 3001),
         public: env.string('SERVER_PUBLIC', 'http://127.0.0.1:3001/'),
         host: env.string('SERVER_HOST', '127.0.0.1'),
-        auth: env.string('SERVER_AUTH', crypto.randomBytes(32).toString('hex'))
+        token: env.string('SERVER_TOKEN', serverToken())
     },
     plex: {
         host: env.string('PLEX_HOST', '127.0.0.1'),

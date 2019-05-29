@@ -15,8 +15,7 @@ ServersManager.update = (e) => {
 	const name = (e.name) ? e.name : (e.url) ? e.url : '';
 	if (!name)
 		return (ServersManager.list());
-	if (!e.auth || e.auth != config.server.auth)
-	{
+	if (!e.token || e.token != config.server.token) {
 		D('Rejecting connection from ' + e.name + ' due to invalid authentication token.');
 		return;
 	}

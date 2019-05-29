@@ -63,4 +63,4 @@ httpServer.on('upgrade', (req, res) => {
 
 // Debug
 D('Launched on ' + internalUrl());
-D('Authentication token is ' + config.server.auth);
+D('Authentication token is ' + config.server.token);
