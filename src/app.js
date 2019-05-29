@@ -12,6 +12,7 @@ import debug from 'debug';
 
 // Debugger
 const D = debug('UnicornLoadBalancer');
+const util = require('util'); //mgn
 
 // Welcome
 D('Version: ' + config.version)
@@ -63,3 +64,4 @@ httpServer.on('upgrade', (req, res) => {
 
 // Debug
 D('Launched on ' + internalUrl());
+D('Authentication token is ' + config.server.auth);

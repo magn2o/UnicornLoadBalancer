@@ -1,3 +1,4 @@
+import debug from 'debug';
 import fetch from 'node-fetch';
 import { time, publicUrl } from '../utils';
 import config from '../config';
@@ -6,11 +7,19 @@ let servers = {};
 
 let ServersManager = {};
 
+// Debugger
+const D = debug('UnicornLoadBalancer');
+
 // Add or update a server
 ServersManager.update = (e) => {
 	const name = (e.name) ? e.name : (e.url) ? e.url : '';
 	if (!name)
 		return (ServersManager.list());
+	if (!e.auth || e.auth != config.server.auth)
+	{
+		D('Rejecting connection from ' + e.name + ' due to invalid authentication token.');
+		return;
+	}
 	servers[name] = {
 		name,
 		sessions: ((!Array.isArray(e.sessions)) ? [] : e.sessions.map((s) => ({
@@ -43,6 +52,7 @@ ServersManager.list = () => {
 	Object.keys(servers).forEach((i) => {
 		output[i] = { ...servers[i], score: ServersManager.score(servers[i]) };
 	});
+
 	return (output);
 }
 
