@@ -66,4 +66,3 @@ export const replaceAll = (input, search, replace) => {
         str = str.replace(search, replace);
     return str
 };
->>>>>>> 35a593071f60763c9d8151a000cb9661143eb47b
