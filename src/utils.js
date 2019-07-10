@@ -59,3 +59,11 @@ export const mdir = (path) => (new Promise((resolve, reject) => {
 export const serverToken = () => {
 	return crypto.randomBytes(20).toString('hex');
 }
+
+export const replaceAll = (input, search, replace) => {
+    let str = input;
+    while (str.indexOf(search) !== -1)
+        str = str.replace(search, replace);
+    return str
+};
+>>>>>>> 35a593071f60763c9d8151a000cb9661143eb47b
